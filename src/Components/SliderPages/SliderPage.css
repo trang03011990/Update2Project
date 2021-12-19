@@ -1,0 +1,100 @@
+@import "~antd/dist/antd.css";
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+}
+
+.SliderBody{
+    margin: 120px 0;
+}
+
+.ant-carousel .ContentStyle {
+    display: flex;
+    justify-content: space-around;
+    color: #fff;
+    
+}
+
+.itemSlider {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+
+.itemSliderContent {
+    width: 500px;
+    border-radius: 20px;
+    padding: 30px 50px;
+    margin: 20px 0;
+    background-color: #113D3C;
+}
+
+.itemSlider img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.qouteTitleContent {
+    display: flex;
+    align-items: center;
+}
+
+.textQoute{
+    position: relative;
+    padding-left: 10px;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: justify;
+}
+
+.textQouteTitle{
+    font-size: 15px;
+    font-weight: 500; 
+    
+}
+
+.textQouteTitle h5{
+    font-weight: 600;  
+    color: #fff;  
+}
+
+.textQouteTitle p{
+    font-weight: 200;
+    opacity: 0.7;
+}
+
+.itemSliderContent blockquote  q::before{
+    font-family: monospace;
+    position: absolute;
+    font-size: 50px;
+    top: -25px;
+    left: -25px;
+    
+}
+
+/* Dots */
+.ant-carousel .slick-dots-bottom {
+    bottom: -20px;
+}
+
+.ant-carousel .slick-dots li{
+    margin-right: 25px;  
+
+}
+
+.ant-carousel .slick-dots li.slick-active button {
+    background-color: #113D3C; 
+    width: 30px; 
+    opacity: 1;
+}
+
+
+.ant-carousel .slick-dots li button{
+    background-color: #113D3C;
+    width: 10px;
+    height: 10px;
+    border-radius: 25px;
+}

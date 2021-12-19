@@ -1,0 +1,10 @@
+.formGlobal{
+    text-align: center;
+    background-color: rgba(97, 176, 207, 0.5);
+    border-radius: 5px;
+}
+
+.formInput{
+    width: 60%;
+    
+}

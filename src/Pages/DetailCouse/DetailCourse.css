@@ -1,0 +1,96 @@
+.detailPage {
+    padding: 0 40px;
+    margin: 40px 0;
+}
+
+.detailRightPages {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Detail content */
+.detailContentPages {
+    margin-top: 40px;
+    padding: 30px 40px;
+    box-shadow: 0px 8px 20px 0px #a9b6b0;
+}
+
+.detailContent {
+    margin: 10px 0;
+}
+
+.detailContent ul li {
+    padding: 10px 0;
+}
+
+.detailContent ul li i {
+    margin-right: 10px;
+    color: #BF9E9C;
+}
+
+/* Text title */
+.titleDetailCard {
+    font-size: 20px;
+    font-weight: 700;
+    color: #113D3C;
+}
+
+.textDetailTitle {
+    font-size: 16px;
+    padding: 10px 0;
+}
+
+.subTextDetail {
+    font-size: 15px;
+    color: #000000;
+    opacity: 0.5;
+}
+
+.subDetailStyle {
+    font-style: italic;
+}
+.textContentDetail {
+    line-height: 1.6;
+    /* text-align: justify; */
+    font-size: 16px;
+    padding: 20px 20px;
+}
+
+/* Btn register detail */
+.btnDetail {
+    padding: 10px 20px;
+}
+
+/* Icon detail */
+.iconDetail {
+    padding: 8px 0;
+}
+.iconDetail i {
+    margin-right: 10px;
+}
+
+.iconStudentDetail {
+    color: #01877e;
+}
+
+.iconMoneyDetail {
+    color: #5cb2ac;
+}
+
+.iconCalendarDetail {
+    color: #b6ddda;
+}
+
+.iconClockDetail {
+    color: #f9d678;
+}
+
+.iconLevelDetail {
+    color: #f9ca9a;
+}
+
+.iconLocalDetail {
+    color: #f8bebb;
+}

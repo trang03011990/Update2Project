@@ -1,0 +1,111 @@
+.searchPage {
+    padding: 0 40px;
+    margin: 20px 0;
+}
+
+.searchModel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cardSearchBox {
+    margin: 20px 0 0 0;
+    padding: 10px;
+    border: 2px solid #01877e;
+    border-radius: 8px;
+}
+
+.navSearchTitle {
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.navSearchIcon {
+    font-size: 25px;
+    color: #01877e;
+    margin-right: 5px;
+}
+
+.navSearch {
+    padding: 5px 10px;
+}
+
+.navSearch .levelBox {
+    padding: 0 10px;
+}
+/* css checkbox */
+.pretty.p-icon input:checked ~ .state label:before {
+    background-color: #01877e;
+}
+
+.pretty input:checked ~ .state i {
+    color: #ffffff;
+}
+
+/* Css starbox  */
+.starBox {
+    padding: 0 0 0 20px;
+}
+
+.navSearch .pretty .starBox label {
+    text-indent: 0;
+}
+
+/* Card search */
+.textCardSearch {
+    margin-top: 8px;
+}
+
+.textCardSearch .textCardTitle {
+    padding-right: 20px;
+}
+
+/* img Search */
+.imgSearch {
+    height: 220px;
+    max-height: 220px;
+    width: 100%;
+}
+
+/* Paginate */
+.paginationPages {
+    display: flex;
+    justify-content: center;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.25rem;
+}
+
+.pageLinkPages {
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: 5px;
+    line-height: 1.25;
+    color: #000000;
+    background-color: #fff;
+    border: 2px solid #01877e;
+    border-radius: 5px;
+}
+
+.page-item.active .pageLinkPages {
+    z-index: 3;
+    color: #fff;
+    background-color: #01877e;
+    border-color: rgb(17, 61, 60, 0.5);
+}
+
+.pageLinkPages:focus {
+    z-index: 3;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(1, 135, 126, 0.25);
+}
+
+.pageLinkPages:hover {
+    z-index: 2;
+    color: #fff;
+    text-decoration: none;
+    background-color: #01877E;
+    border-color: #dee2e6;
+}

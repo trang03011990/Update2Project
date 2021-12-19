@@ -1,0 +1,77 @@
+/* Footer */
+
+.footerBody{
+    padding: 0px 40px;
+}
+
+/* Icon footer */
+.textCardTitle .iconFooterLogo {
+    top: -10px;
+}
+
+.iconFooter {
+    display: inline-block;
+    margin: 0px 10px;
+    width: 40px;
+    height: 40px;
+    color: #ffffff;
+    background: rgb(1, 135, 126);
+    opacity: 0.5;
+    border-radius: 50%;
+    line-height: 40px;
+    text-align: center;
+    transition: all 0.5s;
+}
+.iconSize{
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    margin: 0 5px;
+    transition: all 0.3s linear;
+}
+
+.iconSize:hover{
+    box-shadow:  1px 2px 2px 1px #636363;
+}
+.iconFooter:hover {
+    opacity: 1;
+    
+}
+
+/* Menu footer */
+.menuFooter li {
+    padding: 5px 0;
+    transition: all 0.5s;
+
+}
+
+/* Text footer */
+.textFooterTitle {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+
+.textCardTitle ul li:hover {
+    transform: translateY(-2px);
+    color: rgb(1, 135, 126);
+    cursor: default;
+}
+
+.textCardTitle ul li i {
+    font-size: 12px; 
+}
+
+/* Form register Footer */
+.formFooter{
+    margin: 3px 0;
+    outline: none;
+    border: none;
+    width: 300px;
+    height: 40px;
+    border: 2px solid #4d8b86;
+    border-radius: 8px;
+    padding-left: 10px;
+    background-color: rgb(245 245 245);
+    
+}

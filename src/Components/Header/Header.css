@@ -1,0 +1,63 @@
+.navBody{
+    box-shadow: 2px 0px 9px -3px #a09797;
+}
+.homeHeader {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px;
+}
+
+.searchInput {
+    display: flex;
+    align-items: center;
+}
+
+.searchForm {
+    outline: none;
+    border: none;
+    width: 300px;
+    height: 40px;;
+    border-radius: 8px;
+    padding-left: 10px;
+    background-image: url("../../Assets/Img/imgHeader/search2.png");
+    background-size: 30px;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-color: rgb(245 245 245);
+}
+
+.GlobalForm:focus {
+    border: 2px solid #4d8b86;
+    outline: none;
+}
+
+.textMenu {   
+    font-weight: 500;
+    transition: all 0.3s;
+    color: #000000;
+    font-size: 16px;
+    
+}
+
+.textE{
+    color: #01877e;
+    font-size: 40px;
+    /* text-shadow: 4px 2px 2px #411313 */
+    /* text-shadow: -5px 5px 2px #052f04; */
+   
+}
+
+.textMenu:hover {
+    color: #01877e;
+}
+
+
+.iconLogo {
+    right: 5px;
+    top: 15px;
+    position: absolute;
+}
+
+

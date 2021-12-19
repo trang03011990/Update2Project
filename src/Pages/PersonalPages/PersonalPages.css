@@ -1,0 +1,222 @@
+.PersonalBody {
+    padding: 20px 40px;
+}
+
+.headerBackground {
+    background-image: url(../../Assets/Img/imgPersonal/nghe-designer-2.png);
+    background-position: left center;
+    background-repeat: no-repeat;
+    height: 200px;
+    min-height: 200px;
+    border-radius: 8px;
+    position: relative;
+    z-index: 1;
+    /* height: 50%; */
+}
+
+.headerBackground::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+    background-color: rgb(85 84 84 / 50%);
+    z-index: 1;
+}
+
+/* small Card */
+.smallCard {
+    position: absolute;
+    width: 100%;
+    padding: 0 40px;
+    bottom: -30%;
+    left: 0;
+    z-index: 10;
+}
+
+.smallCard img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.smallCardLeft {
+    display: flex;
+    align-items: center;
+}
+
+/* card Title*/
+/* titleDetailCard ,  subTextDetail from detail card*/
+.smallTitle {
+    line-height: 1.2;
+    position: absolute;
+    bottom: 0;
+}
+
+.smallCardTitle{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* personalContent */
+.ant-tabs-tab{
+    padding: 10px 10px;
+}
+
+.ant-tabs-tab:hover{
+    color: #F9CA9A;
+}
+
+.ant-tabs-ink-bar {
+    position: absolute;
+    background: #2F9D95;
+    pointer-events: none;
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
+    color:#2F9D95;
+}
+/* person Content */
+.personalContent {
+    padding: 100px 0;
+}
+
+.infoContentTop{
+    position: relative;
+    padding: 20px 40px;
+    margin: 20px 0;
+    background-color: rgb(137, 200, 195, 0.2);
+    border-radius: 8px;
+}
+
+
+.infoContentTop .left p{
+    padding: 10px 0;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.infoContentTop p span{
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/* Btn info */
+.btnInfo{
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+}
+
+/* My course */
+.findCourse{
+    display: flex;
+    justify-content: space-between;
+}
+
+.findTitle {
+    font-size: 20px;
+    font-weight: 700;
+    color: #113d3c;
+    margin-bottom: 10px;
+}
+
+.cancelBody {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    
+}
+
+/* Skill personal */
+/* btn Skill */
+.skillBody{
+    display: flex;
+    padding: 10px 0;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.customSkillBtn{
+    /* padding: 6px; */
+    width: 50px;
+    height: 45px;
+    color: #ffffff;
+    border-radius: 8px;
+    border: none;
+
+}
+
+.skillBtnReact{
+    background-color: #113d3c;
+}
+
+.skillBtnJs{
+    background-color: #f0cc6b;
+
+}
+
+.skillBtnCss{
+    background-color: #F8BEBB;
+}
+
+.skillBtnHtml{
+    background-color: #F9CA9A;
+}
+
+/* infoContentBot */
+.infoContentBot{
+    position: relative;
+    height: 340px;
+    padding: 20px 40px;
+    margin: 20px 0;
+    /* border: 2px solid #01877E; */
+    background-color: rgb(137, 200, 195, 0.2);
+    border-radius: 8px;
+}
+
+/* rightContent */
+.rightContent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.infoContentBot .rightTitleContent{
+    padding: 20px 10px;
+    margin: 5px;
+    border-radius: 8px;
+    background-color: #ffffff;
+}
+
+.rightContent i{
+    color: rgb(249,214,120);
+}
+
+/* Modal update */
+.modalUpdateBody{
+    padding: 20px 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalUpdateBody form {
+    width: 100%;
+}
+
+.modalUpdateBody input {
+    border-radius: 5px;
+    padding: 5px 15px;
+    width: 100%;
+}
+
+.modalUpdateBody .modal-footer{
+    border-top: none;
+}
+
