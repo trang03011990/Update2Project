@@ -1,10 +1,14 @@
-import { GET_MY_COURSE, GET_INFO_USER, LOG_IN, UP_DATE, CANCEL_COURSE,GET_USER_LIST,GET_SEARCH_LIST } from "../types/userTypes"
+import {GET_USER_LIST_CONFIRMED, GET_USER_LIST_NOTCONFIRMED,GET_USER_LIST_NOT_REGISTER ,GET_MY_COURSE, GET_INFO_USER, LOG_IN, UP_DATE, CANCEL_COURSE,GET_USER_LIST,GET_SEARCH_LIST } from "../types/userTypes"
 
 const stateDefault = {
     credentials: {},
     userPersonalInfo: {},
     myCourseDetail: [],
-    userArray:[]
+    userArray:[],    
+    UserListNotConfirmed:[],
+    UserListConfirmed:[],
+    UserListNotRegister:[],
+
 
 }
 
@@ -51,6 +55,21 @@ const UserReducer = (state = stateDefault, action) => {
             return {...state}
         }
         
+                case GET_USER_LIST_NOTCONFIRMED:{
+            state.UserListNotConfirmed=action.data;
+            return {...state}
+        }
+
+        case GET_USER_LIST_CONFIRMED:{
+            state.UserListConfirmed=action.data;
+            return {...state}
+        }
+
+        case GET_USER_LIST_NOT_REGISTER:{
+            state.UserListNotRegister=action.data;
+            return {...state}
+        }
+
         default: return { ...state }
     }
 }

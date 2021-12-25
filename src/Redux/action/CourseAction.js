@@ -128,7 +128,7 @@ export const getCourseListConfirmed=(taiKhoan)=>{
     console.log(taiKhoan)
     return async(dispatch)=>{
         try {
-            let result = await http.post('api/QuanLyNguoiDung/LayDanhSachKhoaHocDaXetDuyet',{taiKhoan})
+            let result = await http.post('/api/QuanLyNguoiDung/LayDanhSachKhoaHocDaXetDuyet',{taiKhoan})
             console.log(result.data)
             const action = {
                 type: GET_COURSE_LIST_CONFIRMED,

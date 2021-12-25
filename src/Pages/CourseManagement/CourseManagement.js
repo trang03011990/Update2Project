@@ -85,7 +85,7 @@ export default function CourseManagement() {
                 <td className="align-middle text-wrap">{item.nguoiTao.hoTen} </td>
                 <td>
                     <button onClick={()=>{getCourse(item.maKhoaHoc)}}type="button" className="btn btn-success mx-1" data-toggle="modal" data-target="#courseReg" >Ghi danh</button>
-                    <button onClick={()=>{updateCourse(item)}}className="btn btn-warning mx-1" >Sửa</button>
+                    <button onClick={()=>{updateCourse(item)}}className="btn btn-warning mx-1" data-toggle="modal" data-target="#updateCourse">Sửa</button>
                     <button onClick={()=>{deleteCourse(item.maKhoaHoc)}} className="btn btn-danger mx-1" >Xóa</button>
                 </td>
             </tr>
@@ -141,7 +141,7 @@ export default function CourseManagement() {
                 </table>
             </div>
             <CourseModal />
-            <CourseRegisterModal maKhoaHoc={course} />
+            <CourseRegisterModal course={course} />
             <CourseUpdateModal courseUpdate={courseUpdate}/>
             <ReactPaginate
                 nextLabel="Sau >"

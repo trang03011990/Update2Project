@@ -1,5 +1,5 @@
 import { http } from "../../Util/setting"
-import { CANCEL_COURSE, GET_INFO_USER, GET_MY_COURSE, LOG_IN, UP_DATE, GET_USER_LIST,GET_SEARCH_LIST } from "../types/userTypes"
+import { GET_USER_LIST_CONFIRMED,GET_USER_LIST_NOTCONFIRMED,GET_USER_LIST_NOT_REGISTER, CANCEL_COURSE, GET_INFO_USER, GET_MY_COURSE, LOG_IN, UP_DATE, GET_USER_LIST,GET_SEARCH_LIST } from "../types/userTypes"
 
 export const userLogin = (values, formikLogin) => {
     return async (dispatch) => {
@@ -201,5 +201,77 @@ export const getSearchList = (v) => {
     } catch (errors) {
         alert(errors)
     }
-}}
+}
+}
+
+// export const courseSearchList1 = (tuKhoa) => {
+//     console.log(tuKhoa)
+//     return async (dispatch) => {
+//         try {
+//             let result = await http.get(`/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc?tenKhoaHoc=${tuKhoa}`)
+//             const action = {
+//                 type: GET_COURSE_LIST,
+//                 data: result.data
+//             }
+//             dispatch(action)
+//         } catch (error) {
+//             console.log(error)
+
+//         }
+//     }
+// }
+
+export const getUserListNotConfirmed=(maKhoaHoc)=>{
+    console.log(maKhoaHoc)
+    return async(dispatch)=>{
+        try {
+            let result = await http.post('/api/QuanLyNguoiDung/LayDanhSachHocVienChoXetDuyet',{maKhoaHoc})
+            console.log(result.data)
+            const action = {
+                type: GET_USER_LIST_NOTCONFIRMED,
+                data: result.data
+            }
+    
+            dispatch(action)
+        } catch (error) {
+            console.log(error.response)
+        }
+    }
+}
+
+export const getUserListConfirmed=(maKhoaHoc)=>{
+    console.log(maKhoaHoc)
+    return async(dispatch)=>{
+        try {
+            let result = await http.post('/api/QuanLyNguoiDung/LayDanhSachHocVienKhoaHoc',{maKhoaHoc})
+            console.log(result.data)
+            const action = {
+                type: GET_USER_LIST_CONFIRMED,
+                data: result.data
+            }
+    
+            dispatch(action)
+        } catch (error) {
+            console.log(error.response)
+        }
+    }
+}
+
+export const getUserListNotRegister=(maKhoaHoc)=>{
+    console.log(maKhoaHoc)
+    return async(dispatch)=>{
+        try {
+            let result = await http.post('https://elearningnew.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDungChuaGhiDanh',{maKhoaHoc})
+            console.log(result.data)
+            const action = {
+                type: GET_USER_LIST_NOT_REGISTER,
+                data: result.data
+            }
+    
+            dispatch(action)
+        } catch (error) {
+            console.log(error.response)
+        }
+    }
+}
 

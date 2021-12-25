@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function CourseUpdateModal() {
     return (
-        <div className="modal fade" id="myModal">
+        <div className="modal fade" id="updateCourse">
                 <div className="modal-dialog formCourse">
                     <div className="modal-content">
 
