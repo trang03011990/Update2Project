@@ -2,17 +2,31 @@ import React from 'react'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { http } from '../../Util/setting';
-import { useDispatch,useSelector} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { courseCategory, getListCourse } from '../../Redux/action/CourseAction';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function CourseModal() {
+    const [thumb, setThumb] = useState('../img/logo512.png')
+
     const coursesCategary = useSelector(state => state.CourseReducer.coursesCategary)
     const userArray = useSelector(state => state.UserReducer.userArray)
     const dispatch = useDispatch()
     const addCourse = async (values) => {
+        console.log(values)
+        let formData = new FormData();
+        for (let key in values) {
+            if (key !== 'hinhAnh') {
+                formData.append(key, values[key]);
+            } else {
+                formData.append('hinhAnh', values.hinhAnh, values.hinhAnh.name)
+            }
+            console.log(formData.get('hinhAnh'))
+
+        }
         try {
-            let result = await http.post('/api/QuanLyKhoaHoc/ThemKhoaHoc', values)
+            console.log(formData.get('hinhAnh'))
+            let result = await http.post('/api/QuanLyKhoaHoc/ThemKhoaHocUploadHinh', formData)
             if (result.request.status === 200) {
                 formik.resetForm()
                 alert('Thêm thành công')
@@ -30,9 +44,9 @@ export default function CourseModal() {
             biDanh: "",
             tenKhoaHoc: "",
             moTa: "",
-            luotXem: 0,
-            danhGia: 0,
-            hinhAnh: "",
+            luotXem: "",
+            danhGia: "",
+            hinhAnh: {},
             maNhom: "",
             ngayTao: "",
             maDanhMucKhoaHoc: "",
@@ -48,8 +62,8 @@ export default function CourseModal() {
             moTa: Yup.string()
                 .required('Mô tả không được để trống'),
 
-            ngayTao:Yup.date()
-            .required('Ngày tạo không được để trống')
+            ngayTao: Yup.date()
+                .required('Ngày tạo không được để trống')
             // .format('DD/MM/YYYY', true),
 
         }),
@@ -61,18 +75,18 @@ export default function CourseModal() {
         dispatch(courseCategory)
     }, [])
 
-    const renderCourseList=(coursesCategary)=>{
-        return coursesCategary.map((i)=>{
-                return <option value={i.maDanhMuc}>{i.tenDanhMuc}</option>
-            })
+    const renderCourseList = (coursesCategary) => {
+        return coursesCategary.map((i) => {
+            return <option value={i.maDanhMuc}>{i.tenDanhMuc}-{i.maDanhMuc}</option>
+        })
     }
 
-    const renderCreatorList=(userArray)=>{
-        return userArray.map((i)=>{
-                if(i.maLoaiNguoiDung=="GV"){
-                    return <option value={i.taiKhoan}>{i.taiKhoan}</option>
-                }
-            })
+    const renderCreatorList = (userArray) => {
+        return userArray.map((i) => {
+            if (i.maLoaiNguoiDung == "GV") {
+                return <option value={i.taiKhoan}>{i.taiKhoan}</option>
+            }
+        })
     }
 
     return (
@@ -86,7 +100,7 @@ export default function CourseModal() {
                     </header>
                     {/* Modal body */}
                     <div className="modal-body">
-                        <form className="d-flex flex-wrap" role="form">
+                        <form onSubmit={formik.handleSubmit} className="d-flex flex-wrap" role="form">
                             <div className="form-group col-6">
                                 <div className="input-group">
                                     <div className="input-group-prepend">
@@ -94,7 +108,7 @@ export default function CourseModal() {
                                     </div>
                                     <input onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.maKhoaHoc} type="text" name="maKhoaHoc" id="tknv" className="form-control input-sm" placeholder="Mã khóa học" />
                                 </div>
-                                {formik.touched.maKhoaHoc && formik.errors.maKhoaHoc &&<div className="text-danger text-left">{formik.errors.maKhoaHoc}</div>}
+                                {formik.touched.maKhoaHoc && formik.errors.maKhoaHoc && <div className="text-danger text-left">{formik.errors.maKhoaHoc}</div>}
                             </div>
                             <div className="form-group col-6">
                                 <div className="input-group">
@@ -103,7 +117,7 @@ export default function CourseModal() {
                                     </div>
                                     <input onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.tenKhoaHoc} type="name" name="tenKhoaHoc" id="name" className="form-control input-sm" placeholder="Tên khóa học" />
                                 </div>
-                                {formik.touched.tenKhoaHoc && formik.errors.tenKhoaHoc &&<div className="text-danger text-left">{formik.errors.tenKhoaHoc}</div>}
+                                {formik.touched.tenKhoaHoc && formik.errors.tenKhoaHoc && <div className="text-danger text-left">{formik.errors.tenKhoaHoc}</div>}
                             </div>
                             <div className="form-group col-6">
                                 <div className="input-group">
@@ -115,7 +129,7 @@ export default function CourseModal() {
                                         {renderCourseList(coursesCategary)}
                                     </select>
                                 </div>
-                                {formik.touched.maDanhMucKhoaHoc && formik.errors.maDanhMucKhoaHoc &&<div className="text-danger text-left">{formik.errors.maDanhMucKhoaHoc}</div>}
+                                {formik.touched.maDanhMucKhoaHoc && formik.errors.maDanhMucKhoaHoc && <div className="text-danger text-left">{formik.errors.maDanhMucKhoaHoc}</div>}
                             </div>
 
                             <div className="form-group col-6">
@@ -125,7 +139,7 @@ export default function CourseModal() {
                                     </div>
                                     <input onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.ngayTao} type="text" name="ngayTao" id="datepicker" className="form-control" placeholder="Ngày tạo" />
                                 </div>
-                                {formik.touched.ngayTao && formik.errors.ngayTao &&<div className="text-danger text-left">{formik.errors.ngayTao}</div>}
+                                {formik.touched.ngayTao && formik.errors.ngayTao && <div className="text-danger text-left">{formik.errors.ngayTao}</div>}
                             </div>
 
                             <div className="form-group col-6">
@@ -135,7 +149,7 @@ export default function CourseModal() {
                                     </div>
                                     <input onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.danhGia} type="number" name="danhGia" id="tknv" className="form-control input-sm" placeholder="Đánh giá" />
                                 </div>
-                                {formik.touched.danhGia && formik.errors.danhGia &&<div className="text-danger text-left">{formik.errors.danhGia}</div>}
+                                {formik.touched.danhGia && formik.errors.danhGia && <div className="text-danger text-left">{formik.errors.danhGia}</div>}
                             </div>
                             <div className="form-group col-6">
                                 <div className="input-group">
@@ -144,7 +158,7 @@ export default function CourseModal() {
                                     </div>
                                     <input onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.luotXem} type="number" name="luotXem" id="name" className="form-control input-sm" placeholder="Lượt xem" />
                                 </div>
-                                {formik.touched.luotXem && formik.errors.luotXem &&<div className="text-danger text-left">{formik.errors.luotXem}</div>}
+                                {formik.touched.luotXem && formik.errors.luotXem && <div className="text-danger text-left">{formik.errors.luotXem}</div>}
                             </div>
                             <div className="form-group col-6">
                                 <div className="input-group">
@@ -160,9 +174,22 @@ export default function CourseModal() {
                             </div>
 
                             <div className="form-group col-6">
-                                <div className="custom-file">
-                                    <input type="file" className="custom-file-input" id="customFile" />
-                                    <label className="custom-file-label text-left" htmlFor="customFile">Chọn hình ảnh</label>
+                                <div>
+                                    <input name='hinhAnh'
+                                        accept="image/png,image/jpg,image/jpeg"
+                                        onChange={(event) => {
+                                            let file=event.target.files[0]
+                                            let reader = new FileReader();
+                                            reader.readAsDataURL(file);
+                                            reader.onload = (e) => {
+                                                setThumb(e.target.result)
+                                            };
+                                            formik.setFieldValue("hinhAnh", file);
+                                            // console.log(formik.values)
+                                        }}
+                                        onBlur={formik.handleBlur} type="file" id="hinhAnh" />
+                                    {/* <label className="custom-file-label text-left" htmlFor="hinhAnh"></label> */}
+
                                 </div>
 
                             </div>
@@ -191,9 +218,9 @@ export default function CourseModal() {
 
 
 
-                                    </select>                                
-                                    </div>
-                                {formik.touched.maNhom && formik.errors.maNhom &&<div className="text-danger text-left">{formik.errors.maNhom}</div>}
+                                    </select>
+                                </div>
+                                {formik.touched.maNhom && formik.errors.maNhom && <div className="text-danger text-left">{formik.errors.maNhom}</div>}
                             </div>
                             {/* <div className="form-group col-6">
                                         <label htmlFor="exampleFormControlFile1">HInh</label>
@@ -204,24 +231,32 @@ export default function CourseModal() {
 
                             <div className="col-12 container text-justify">
                                 <h5 className="card-header mb-2">Mô tả khóa học</h5>
-                                {formik.touched.moTa && formik.errors.moTa &&<div className="text-danger text-left">{formik.errors.moTa}</div>}
+                                {formik.touched.moTa && formik.errors.moTa && <div className="text-danger text-left">{formik.errors.moTa}</div>}
                                 <div className="row">
-                                    <img src="../img/logo512.png" className="img-fluid rounded w-25 col-3" />
-                                    <textarea onChange={formik.handleChange} 
-                                    onBlur={formik.handleBlur} 
-                                    value={formik.values.moTa} type="text" name="moTa" 
-                                    className="form-control input-sm col-9" 
-                                    placeholder="Nhập mô tả" />
+                                    <span className='col-3'>
+                                        <img src={thumb}
+                                            className="img-fluid rounded"
+                                            // alt={File&&File.name}
+                                            height={200}
+                                            width={200} />                                    </span>
+
+                                    <textarea onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
+                                        value={formik.values.moTa} type="text" name="moTa"
+                                        className="form-control input-sm col-9"
+                                        placeholder="Nhập mô tả" />
                                 </div>
+                            </div>
+
+                            {/* Modal footer */}
+                            <div className="modal-footer col-12" id="modal-footer">
+                                <button id="btnThemNV" type="submit" className="btn btn-success">Thêm khóa học</button>
+                                <button id="btnDong" type="button" className="btn btn-danger" data-dismiss="modal">Đóng</button>
                             </div>
                         </form>
 
                     </div>
-                    {/* Modal footer */}
-                    <div className="modal-footer" id="modal-footer">
-                        <button id="btnThemNV" type="submit" className="btn btn-success">Thêm khóa học</button>
-                        <button id="btnDong" type="button" className="btn btn-danger" data-dismiss="modal">Đóng</button>
-                    </div>
+
                 </div>
             </div>
         </div>
